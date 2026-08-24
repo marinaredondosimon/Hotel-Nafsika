@@ -146,7 +146,7 @@
           <div class="info-card">
             <h3>Phone &amp; Email</h3>
             <a href="tel:+302663051051">+30 266 305 1051</a>
-            <a href="mailto:service@hotelnafsika.com">service@hotelnafsika.com</a>
+            <a href="mailto:hotelnafsika@yahoo.com">hotelnafsika@yahoo.com</a>
           </div>
           <div class="info-card">
             <h3>Reception Hours</h3>
@@ -176,7 +176,7 @@
   <div class="foot-top">
     <div><div class="foot-logo"><img src="images/logo.png" alt="Nafsika Hotel"/></div><p class="foot-tagline">"Your home away from home<br>in Corfu Island"</p></div>
     <div class="foot-col"><h4>Navigation</h4><a href="room-rates.html">Rooms &amp; Rates</a><a href="facilities.html">Facilities</a><a href="bar-one.html">Bar One</a><a href="taverna.html">The Taverna</a><a href="contact.html">Contact</a></div>
-    <div class="foot-col"><h4>Contact</h4><p>Nafsika Hotel<br>Agios Stefanos, Avliotes<br>Corfu, Greece 49081</p><a href="tel:+302663051051">+30 266 305 1051</a><a href="mailto:service@hotelnafsika.com">service@hotelnafsika.com</a><a href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener" style="color:var(--gold);margin-top:.75rem">Book on Booking.com →</a></div>
+    <div class="foot-col"><h4>Contact</h4><p>Nafsika Hotel<br>Agios Stefanos, Avliotes<br>Corfu, Greece 49081</p><a href="tel:+302663051051">+30 266 305 1051</a><a href="mailto:hotelnafsika@yahoo.com">hotelnafsika@yahoo.com</a><a href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener" style="color:var(--gold);margin-top:.75rem">Book on Booking.com →</a></div>
   </div>
   <div class="foot-bottom"><span>© 2026 Nafsika Hotel. All rights reserved.</span><span>Agios Stefanos · Corfu · Greece</span></div>
 </footer>
@@ -187,43 +187,36 @@
   mob.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mob.classList.remove("open");ham.classList.remove("open");ham.setAttribute("aria-expanded",false);document.body.style.overflow="";}));
   const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}}),{threshold:.1});
   document.querySelectorAll(".reveal,.reveal-l,.reveal-r").forEach(el=>io.observe(el));
-  /* === EmailJS config ===
-     1. Crea una cuenta gratis en https://www.emailjs.com/
-     2. Conecta tu Gmail como "Email Service" y copia su Service ID
-     3. Crea una plantilla ("Email Template") y copia su Template ID
-        Usa estas variables en la plantilla: {{from_name}}, {{from_email}}, {{message}}
-     4. Copia tu "Public Key" desde Account > General
-     5. Pega los 3 valores abajo */
-  const EMAILJS_PUBLIC_KEY  = "TU_PUBLIC_KEY";
-  const EMAILJS_SERVICE_ID  = "TU_SERVICE_ID";
-  const EMAILJS_TEMPLATE_ID = "TU_TEMPLATE_ID";
 
-  if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  /* === Envío temporal por mailto ===
+     Mientras configuras EmailJS (ver instrucciones más abajo), el botón
+     abre el cliente de correo del visitante con un email ya redactado
+     dirigido a hotelnafsika@yahoo.com */
+  const CONTACT_EMAIL = "hotelnafsika@yahoo.com";
 
   document.getElementById("formSubmit").addEventListener("click",function(e){
     e.preventDefault();
     const nameEl=document.getElementById("fname"),emailEl=document.getElementById("femail"),msgEl=document.getElementById("fmsg");
     const n=nameEl.value.trim(),em=emailEl.value.trim(),msg=msgEl.value.trim();
-    const successBox=document.getElementById("formSuccess"),errorBox=document.getElementById("formError"),btn=this;
+    const successBox=document.getElementById("formSuccess"),errorBox=document.getElementById("formError");
     successBox.classList.remove("show");errorBox.classList.remove("show");
 
     if(!n||!em||!msg){alert("Please fill in all fields.");return;}
 
-    btn.disabled=true;const originalText=btn.textContent;btn.textContent="Sending…";
+    const subject=encodeURIComponent("Website enquiry from "+n);
+    const body=encodeURIComponent("Name: "+n+"\nEmail: "+em+"\n\nMessage:\n"+msg);
+    window.location.href="mailto:"+CONTACT_EMAIL+"?subject="+subject+"&body="+body;
 
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: n,
-      from_email: em,
-      message: msg
-    }).then(function(){
-      successBox.classList.add("show");
-      nameEl.value="";emailEl.value="";msgEl.value="";
-    }).catch(function(err){
-      console.error("EmailJS error:",err);
-      errorBox.classList.add("show");
-    }).finally(function(){
-      btn.disabled=false;btn.textContent=originalText;
-    });
+    successBox.classList.add("show");
+    nameEl.value="";emailEl.value="";msgEl.value="";
   });
+
+  /* === EmailJS (opcional, para más adelante) ===
+     Cuando tengas cuenta en EmailJS, rellena estos 3 valores y sustituye
+     el bloque de arriba por el envío real vía emailjs.send(...) */
+  // const EMAILJS_PUBLIC_KEY  = "TU_PUBLIC_KEY";
+  // const EMAILJS_SERVICE_ID  = "TU_SERVICE_ID";
+  // const EMAILJS_TEMPLATE_ID = "TU_TEMPLATE_ID";
+  // if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 </script>
 </body></html>
