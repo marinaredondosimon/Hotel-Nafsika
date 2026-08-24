@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>The Taverna – Nafsika Hotel</title>
+  <meta name="description" content="Mama Theodora's kitchen. Stamna, Lamb Kleftiko and Moussaka. Homemade Greek cuisine at The Taverna, Nafsika Hotel Corfu."/>
+  <link rel="icon" href="images/cropped-logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--navy:#1E3055;--navy-deep:#141F38;--navy-mid:#2A4270;--gold:#C8A96E;--gold-light:#D9BF8F;--sand:#F2EDE4;--stone:#E8E0D4;--white:#FAFAF8;--text:#2A2A2A;--text-mid:#6A6A6A;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--sans);background:var(--white);color:var(--text);overflow-x:hidden;}img{display:block;width:100%;height:100%;object-fit:cover;}a{text-decoration:none;color:inherit;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2rem 5vw;transition:padding .5s var(--ease),background .5s var(--ease);}
+    nav.scrolled{padding:1rem 5vw;background:rgba(20,31,56,.96);backdrop-filter:blur(16px);}
+    .nav-logo img{height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transition:height .4s;}nav.scrolled .nav-logo img{height:38px;}.nav-logo-text{display:none;font-family:var(--serif);font-size:1.6rem;font-weight:400;letter-spacing:.02em;color:#fff;}
+    .nav-links{display:flex;gap:2.8rem;list-style:none;}.nav-links a{font-size:.64rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color .3s;}.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+    .nav-book{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:.6rem 1.8rem;border-radius:1px;transition:background .3s;}.nav-book:hover{background:var(--gold-light);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}.hamburger span{width:26px;height:1px;background:#fff;display:block;transition:transform .35s,opacity .35s;}
+    .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}.hamburger.open span:nth-child(2){opacity:0;}.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    .mobile-menu{position:fixed;inset:0;z-index:99;background:var(--navy-deep);display:none;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;transition:opacity .4s;}.mobile-menu.open{display:flex;opacity:1;}
+    .mobile-menu a{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--sand);}.mobile-menu .m-book{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:.75rem 2.2rem;border-radius:1px;}
+    @media(max-width:900px){.nav-links,.nav-book{display:none;}.hamburger{display:flex;}.nav-logo img{display:none;}.nav-logo-text{display:block;}}
+    .page-hero{position:relative;height:70vh;min-height:460px;display:flex;align-items:flex-end;}
+    .page-hero-bg{position:absolute;inset:0;overflow:hidden;}.page-hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:zoomIn 14s var(--ease) forwards;}
+    @keyframes zoomIn{to{transform:scale(1);}}
+    .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(20,31,56,.1) 0%,rgba(20,31,56,.2) 40%,rgba(20,31,56,.85) 100%);}
+    .page-hero-content{position:relative;padding:0 8vw 5rem;width:100%;}
+    .page-hero-eyebrow{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;opacity:0;animation:fadeUp .7s .4s var(--ease) forwards;}
+    .page-hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,6.5rem);font-weight:300;color:#fff;line-height:1.02;opacity:0;animation:fadeUp .9s .6s var(--ease) forwards;}.page-hero-title em{font-style:italic;}
+    .page-hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,2vw,1.25rem);color:rgba(255,255,255,.65);margin-top:.75rem;opacity:0;animation:fadeUp .9s .8s var(--ease) forwards;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .container{max-width:1280px;margin:0 auto;}section{padding:8rem 8vw;}
+    .overline{font-size:.58rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;}
+    .sec-title{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,4rem);font-weight:300;color:var(--navy);line-height:1.08;}.sec-title em{font-style:italic;}
+    .sec-body{font-size:.95rem;line-height:1.9;color:var(--text-mid);}.divider{width:36px;height:1px;background:var(--gold);display:block;margin:1.5rem 0;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+    .reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+    .reveal-r{opacity:0;transform:translateX(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+    .reveal.vis,.reveal-l.vis,.reveal-r.vis{opacity:1;transform:translate(0);}
+    .img-zoom{overflow:hidden;}.img-zoom img{transition:transform .9s var(--ease);}.img-zoom:hover img{transform:scale(1.05);}
+    .btn-primary{display:inline-flex;align-items:center;background:var(--navy);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:1rem 2.4rem;border-radius:1px;transition:background .3s,transform .3s;}.btn-primary:hover{background:var(--navy-mid);transform:translateY(-2px);}
+
+    /* INTRO */
+    .tav-intro{background:var(--white);}
+    .tav-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+    .tav-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:280px 240px;gap:.8rem;}
+    .ti-tall{grid-row:span 2;border-radius:2px;overflow:hidden;}.ti-sm{border-radius:2px;overflow:hidden;}
+    .tav-quote{font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.4rem);font-style:italic;font-weight:300;color:var(--navy);line-height:1.72;border-left:2px solid var(--gold);padding-left:2rem;margin:2rem 0;}
+    @media(max-width:960px){.tav-grid{grid-template-columns:1fr;gap:4rem;}.tav-imgs{grid-template-rows:230px 200px;}}
+    @media(max-width:520px){.tav-imgs{grid-template-rows:170px 155px;gap:.5rem;}}
+
+    /* STORY DARK */
+    .story-dark{background:var(--navy-deep);padding:8rem 8vw;}
+    .story-dark .overline{color:var(--gold);}
+    .story-dark .sec-title{color:#fff;}
+    .story-dark-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+    .story-dark-text .sec-body{color:rgba(255,255,255,.5);margin-top:1.5rem;}.story-dark-text .sec-body+.sec-body{margin-top:1rem;}
+    .story-dark-img{height:460px;border-radius:2px;overflow:hidden;}
+    @media(max-width:960px){.story-dark-grid{grid-template-columns:1fr;gap:4rem;}.story-dark-img{height:300px;}.story-dark{padding:5rem 6vw;}}
+
+    /* RECIPES GRID */
+    .recipes{background:var(--sand);}
+    .recipes-head{margin-bottom:4rem;}
+    .recipes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--stone);}
+    .recipe-img{overflow:hidden;aspect-ratio:4/3;}
+    .recipe-img img{transition:transform .9s var(--ease);}
+    .recipe-img:hover img{transform:scale(1.08);}
+    @media(max-width:860px){.recipes-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:520px){.recipes-grid{grid-template-columns:1fr;}}
+    .recipes-closing{margin-top:4rem;text-align:center;font-family:var(--serif);font-size:clamp(1.2rem,2.8vw,1.7rem);font-weight:300;color:var(--navy);font-style:italic;}
+
+    footer{background:var(--navy-deep);padding:5rem 8vw 2.5rem;}
+    .foot-top{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.07);}
+    .foot-logo img{height:52px;width:auto;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:1.25rem;}
+    .foot-tagline{font-family:var(--serif);font-style:italic;font-size:1rem;color:rgba(255,255,255,.3);line-height:1.7;}
+    .foot-col h4{font-size:.58rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+    .foot-col a,.foot-col p{font-size:.85rem;line-height:2.2;color:rgba(255,255,255,.45);display:block;transition:color .25s;}.foot-col a:hover{color:var(--gold-light);}
+    .foot-bottom{max-width:1280px;margin:0 auto;padding-top:2rem;font-size:.7rem;color:rgba(255,255,255,.18);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    @media(max-width:760px){.foot-top{grid-template-columns:1fr 1fr;}}@media(max-width:480px){.foot-top{grid-template-columns:1fr;}}
+    @media(max-width:620px){section{padding:5rem 6vw;}.recipes{padding:5rem 6vw;}}
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="nafsika-hotel.html" class="nav-logo"><img src="images/logo.png" alt="Nafsika Hotel"/><span class="nav-logo-text">Nafsika Hotel</span></a>
+  <ul class="nav-links"><li><a href="room-rates.html">Rooms &amp; Rates</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="bar-one.html">Bar One</a></li><li><a href="taverna.html" class="active">The Taverna</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <a class="nav-book" href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener">Book Now</a>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mob"><a href="room-rates.html">Rooms &amp; Rates</a><a href="facilities.html">Facilities</a><a href="bar-one.html">Bar One</a><a href="taverna.html">The Taverna</a><a href="contact.html">Contact</a><a class="m-book" href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener">Book Now</a></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_7380-1.jpeg?w=1024" alt="The Taverna at Nafsika Hotel" fetchpriority="high"/></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow">Nafsika Hotel · Corfu</p>
+    <h1 class="page-hero-title"><em>The</em> Taverna</h1>
+    <p class="page-hero-sub">A space for every occasion</p>
+  </div>
+</div>
+
+<section class="tav-intro">
+  <div class="container">
+    <div class="tav-grid">
+      <div class="reveal-l">
+        <span class="overline">The Restaurant</span>
+        <h2 class="sec-title">Homemade local food<br><em>of the highest order</em></h2>
+        <span class="divider"></span>
+        <p class="sec-body">The Taverna is the main restaurant of the Nafsika Hotel, open to everyone. We serve traditional Greek and Mediterranean cuisine made with love, using fresh local ingredients and Mama Theodora's cherished family recipes.</p>
+        <blockquote class="tav-quote">"On our on-site taverna we serve home made local food of the highest order."</blockquote>
+      </div>
+      <div class="tav-imgs reveal-r">
+        <div class="ti-tall img-zoom"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_7768.jpeg?w=766" alt="Taverna dining" loading="lazy"/></div>
+        <div class="ti-sm img-zoom"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_7779.jpeg?w=768" alt="Taverna evening" loading="lazy"/></div>
+        <div class="ti-sm img-zoom" style="align-self:end"><img src="images/img_7766.jpeg" alt="Dining by the sea" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-dark">
+  <div class="container">
+    <div class="story-dark-grid">
+      <div class="story-dark-text reveal-l">
+        <span class="overline">Our Recipes</span>
+        <h2 class="sec-title">Mama Theodora's<br><em>kitchen</em></h2>
+        <span class="divider" style="background:rgba(200,169,110,.4)"></span>
+        <p class="sec-body">Spiros may run the Nafsika, but it was Mama Theodora who always ran the kitchen. Now, following her recipes, you'll taste Stamna, Lamb Kleftiko and Moussaka.</p>
+        <p class="sec-body">Cooked fresh with local ingredients and produce, waiting just for you!</p>
+      </div>
+      <div class="story-dark-img img-zoom reveal-r">
+        <img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_9377-1.jpeg?w=766" alt="Mama Theodora recipes" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recipes">
+  <div class="container">
+    <div class="recipes-head reveal">
+      <span class="overline">From the Kitchen</span>
+      <h2 class="sec-title">Fresh, local &amp; <em>made with love</em></h2>
+    </div>
+    <div class="recipes-grid">
+      <div class="recipe-img reveal" style="transition-delay:.04s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_9276.jpeg?w=766" alt="Greek dish" loading="lazy"/></div>
+      <div class="recipe-img reveal" style="transition-delay:.09s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_9184.jpeg?w=768" alt="Moussaka" loading="lazy"/></div>
+      <div class="recipe-img reveal" style="transition-delay:.14s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_6584.jpeg?w=768" alt="Lamb Kleftiko" loading="lazy"/></div>
+      <div class="recipe-img reveal" style="transition-delay:.19s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_6161.jpeg?w=768" alt="Greek meze" loading="lazy"/></div>
+      <div class="recipe-img reveal" style="transition-delay:.24s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/05/img_2468.jpeg?w=768" alt="Fresh Greek salad" loading="lazy"/></div>
+      <div class="recipe-img reveal" style="transition-delay:.29s"><img src="https://nafsikahotel.com/wp-content/uploads/2026/04/img_3309-edited.jpeg" alt="Homemade dessert" loading="lazy"/></div>
+    </div>
+    <p class="recipes-closing reveal">Cooked fresh and with local ingredients and produce, waiting just for you!</p>
+    <div style="text-align:center;margin-top:3rem" class="reveal"><a class="btn-primary" href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener">Your table is waiting — Book your stay</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div><div class="foot-logo"><img src="images/logo.png" alt="Nafsika Hotel"/></div><p class="foot-tagline">"Your home away from home<br>in Corfu Island"</p></div>
+    <div class="foot-col"><h4>Navigation</h4><a href="room-rates.html">Rooms &amp; Rates</a><a href="facilities.html">Facilities</a><a href="bar-one.html">Bar One</a><a href="taverna.html">The Taverna</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><h4>Contact</h4><p>Nafsika Hotel<br>Agios Stefanos, Avliotes<br>Corfu, Greece 49081</p><a href="tel:+302663051051">+30 266 305 1051</a><a href="mailto:service@hotelnafsika.com">service@hotelnafsika.com</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Nafsika Hotel. All rights reserved.</span><span>Agios Stefanos · Corfu · Greece</span></div>
+</footer>
+<script>
+  const nav=document.getElementById("nav");window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>60),{passive:true});
+  const ham=document.getElementById("ham"),mob=document.getElementById("mob");
+  ham.addEventListener("click",()=>{const o=mob.classList.toggle("open");ham.classList.toggle("open",o);ham.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";});
+  mob.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mob.classList.remove("open");ham.classList.remove("open");ham.setAttribute("aria-expanded",false);document.body.style.overflow="";}));
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}}),{threshold:.1});
+  document.querySelectorAll(".reveal,.reveal-l,.reveal-r").forEach(el=>io.observe(el));
+</script>
+</body></html>
