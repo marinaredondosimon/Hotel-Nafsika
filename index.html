@@ -56,6 +56,7 @@
     .hero { position: relative; height: 100svh; min-height: 640px; display: flex; align-items: center; justify-content: center; }
     .hero-bg { position: absolute; inset: 0; overflow: hidden; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.07); animation: zoomIn 16s var(--ease) forwards; }
+    .hero-bg video { width: 100%; height: 100%; object-fit: cover; transform: scale(1.07); animation: zoomIn 16s var(--ease) forwards; }
     @keyframes zoomIn { to { transform: scale(1); } }
     .hero-overlay { position: absolute; inset: 0; background: rgba(20,31,56,.45); }
     .hero-content { position: relative; padding: 0 8vw; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -214,14 +215,14 @@
 <section class="hero" aria-label="Welcome">
   <div class="hero-bg">
  <video autoplay muted loop playsinline>
-      <source src="images/video.mp4" type="video/mp4">
+      <source src="images/videosmall.mp4" type="video/mp4">
       <!-- fallback por si el video no carga -->
       <img src="images/IMG_6020.jpeg" alt="Nafsika Hotel" />
     </video>  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Agios Stefanos · Corfu · Greece</p>
-    <h1 class="hero-title">Welcome to<br><em>the Nafsika</em></h1>
+    <h1 class="hero-title">Welcome to<br><em>the Nafsika Hotel</em></h1>
     <p class="hero-sub">"Your home away from home in Corfu Island"</p>
     <div class="hero-actions">
       <a class="btn-gold" href="https://www.booking.com/hotel/gr/nafsika-corfu.html" target="_blank" rel="noopener">Book Your Stay</a>
@@ -277,7 +278,7 @@
         </div>
       </div>
       <div class="room-card reveal" style="transition-delay:.12s">
-        <div class="room-card-img"><img src="images/img_7374-edited.jpeg" alt="Deluxe Room" loading="lazy" /></div>
+        <div class="room-card-img"><img src="images+/img_7374-edited.jpeg" alt="Deluxe Room" loading="lazy" /></div>
         <div class="room-card-bar"></div>
         <div class="room-card-body">
           <span class="overline">Room Type 02</span>
